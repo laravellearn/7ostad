@@ -9,6 +9,7 @@ class Book extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = ['name','status','color','group_id'];
 
     public function lessongroup()
