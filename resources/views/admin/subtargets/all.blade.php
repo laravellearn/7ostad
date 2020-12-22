@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">انتخاب مبحث*</label>
-                                <select name="book_id" class="form-control form-control-sm mb-3 my_select3" required>
+                                <select name="topic_id" class="form-control form-control-sm mb-3 my_select3" required>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>
@@ -110,7 +110,7 @@
                 if (book_id) {
                     $.ajax({
                         type: "GET",
-                        url: "{{url('/admin/subtargets/')}}/" + book_id,
+                        url: "{{url('/subtargets/')}}/" + book_id,
                         dataType: "json",
                         success: function(data) {
                             console.log(data);

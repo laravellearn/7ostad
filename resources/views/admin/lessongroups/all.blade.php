@@ -95,7 +95,7 @@
             if (study_id) {
                 $.ajax({
                     type: "GET",
-                    url: "{{url('/admin/lessongroups/')}}/" + study_id,
+                    url: "{{url('/lessongroups/')}}/" + study_id,
                     dataType: "json",
                     success: function(data) {
                         console.log(data);
