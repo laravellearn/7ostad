@@ -19,7 +19,12 @@
                                     <label class="control-label">رشته تحصیلی*</label>
                                     <select class="form-control form-control-sm mb-3" name="study_id">
                                         @foreach($studies as $study)
-                                            <option value="{{ $study->id }}">{{ $study->name }}</option>
+                                            <option value="{{ $study->id }}"
+                                              
+                                                @if($study->id == Session::get('study_id'))
+                                                selected
+                                                @endif
+                                            >{{ $study->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

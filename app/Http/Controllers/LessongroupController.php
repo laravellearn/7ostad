@@ -6,7 +6,7 @@ use App\Models\Grade;
 use App\Models\Lessongroup;
 use App\Models\Study;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Session;
 
 class LessongroupController extends Controller
 {
@@ -51,6 +51,7 @@ class LessongroupController extends Controller
     public function store(Request $request)
     {
         Lessongroup::create($request->all());
+        Session::put($request->all());
         alert()->success('گروه درسی با موفقیت ثبت شد', 'متن پیام')->persistent('خیلی خوب');
         return back();
     }

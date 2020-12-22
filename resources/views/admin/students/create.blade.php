@@ -10,6 +10,12 @@
         $(document).ready(function() {
             $('.my_select').select2();
         });
+        //   $(document).ready(function() {
+    //       $('.usage').datepicker({
+    //         uiLibrary: 'bootstrap4',
+    //          format: "yyyy/mm/dd" ,
+    //     });
+// });
     </script>
     <style>
         .pdp-default{

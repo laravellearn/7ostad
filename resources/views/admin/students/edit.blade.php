@@ -55,6 +55,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group mb-50">
                                             <label>تاریخ تولد</label>
+
                                             <input type="text" value="{{ $student->birthdate }}" name="birthdate"  class="form-control usage">
                                         </div>
                                     </div><!-- Col -->
@@ -158,4 +159,14 @@
             </div>
         </div>
     </div>
+    <script>
+$("input").on("change", function() {
+        this.setAttribute(
+            "data-date",
+            moment(this.value, "YYYY-MM-DD")
+            .format( this.getAttribute("data-date-format") )
+        )
+    }).trigger("change")
+
+    </script>
 @endsection
