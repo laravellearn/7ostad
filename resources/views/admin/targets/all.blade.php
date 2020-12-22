@@ -1,5 +1,15 @@
 @extends('admin.layouts.master')
 @section('title','برنامه هدف')
+@section('style')
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
+    <script src="/js/jquery.min.js"></script>
+    <style>
+        .pdp-default{
+            left: 65%!important;
+        }
+    </style>
+@endsection
+
 @section('content')
     <!-- Main Content Area -->
     <div class="main-content">
@@ -10,12 +20,21 @@
                         <div class="card">
                         <div class="card-body">
                             <h4 class="card-title mb-2">افزودن برنامه هدف</h4><hr>
-                        <form action="" method="POST">
+                        <form action="{{ route('targets.store') }}" method="POST">
                             @CSRF
                             <div class="form-group">
                                 <label class="control-label">نام برنامه*</label>
-                                <input type="text" name="name" value="{{ old('name') }}" required class="form-control">
+                                <input type="text" name="title" value="{{ old('title') }}" required class="form-control">
                             </div>
+                            <div class="form-group">
+                                <label>تاریخ شروع</label>
+                                <input type="text" {{ old('start_date') }} name="start_date" required  class="form-control usage">
+                            </div>
+                            <div class="form-group">
+                                <label>تاریخ پایان</label>
+                                <input type="text" {{ old('end_date') }} name="end_date" required  class="form-control usage">
+                            </div>
+
                             <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>
                         </form>
                     </div>
@@ -38,11 +57,11 @@
                                     <tbody>
                                     @foreach($targets as $target)
                                         <tr>
-                                            <td>{{ $target->name }}</td>
+                                            <td>{{ $target->title }}</td>
                                             <td>{{ $target->start_date }}</td>
                                             <td>{{ $target->end_date }}</td>
                                             <td>
-                                                @if($study->status == "1")
+                                                @if($target->status == "1")
                                                     <span class="badge badge-success">فعال</span>
                                                 @else
                                                     <span class="badge badge-danger">غیرفعال</span>

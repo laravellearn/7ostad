@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Target;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TargetController extends Controller
 {
@@ -36,7 +37,10 @@ class TargetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request['user_id'] = Auth::user()->id;
+        Target::create($request->all());
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        return back();
     }
 
     /**
@@ -58,7 +62,10 @@ class TargetController extends Controller
      */
     public function edit(Target $target)
     {
-        //
+        $targets = Target::all();
+        return view('admin.targets.edit')
+            ->with('targets',$targets)
+            ->with('target',$target);
     }
 
     /**
@@ -70,7 +77,9 @@ class TargetController extends Controller
      */
     public function update(Request $request, Target $target)
     {
-        //
+        $target->update($request->all());
+        alert()->success('ویرایش برنامه هدف با موفقیت انجام شد','متن پیام')->persistent('خیلی خوب');
+        return redirect('/admin/targets');
     }
 
     /**
@@ -81,6 +90,8 @@ class TargetController extends Controller
      */
     public function destroy(Target $target)
     {
-        //
+        $target->delete();
+        alert()->success('برنامه هدف با موفقیت حذف شد', 'متن پیام')->persistent('خیلی خوب');
+        return redirect('admin/targets');
     }
 }

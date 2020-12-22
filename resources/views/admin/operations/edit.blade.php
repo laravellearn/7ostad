@@ -29,6 +29,7 @@
                                     <thead>
                                     <tr>
                                         <th>نام عملکرد</th>
+                                        <th>نام مشاور</th>
                                         <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
@@ -38,6 +39,7 @@
                                     @foreach($operations as $operation)
                                         <tr>
                                             <td>{{ $operation->name }}</td>
+                                            <td>{{ $operation->user->name }}</td>
                                             <td>
                                                 @if($operation->status == "1")
                                                     <span class="badge badge-success">فعال</span>

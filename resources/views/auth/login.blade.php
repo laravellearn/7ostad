@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <img src="/img/core-img/logo.png/" alt="">
                 <div class="card-header">ورود به سیستم</div>
 
                 <div class="card-body">

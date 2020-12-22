@@ -15,7 +15,7 @@
                 <i class="zmdi zmdi-menu"></i>
             </div>
         </div>
-        سامانه مشاورین تحصیلی 7 استاد
+        موسسه کنکور 7 استاد
     </div>
 
     <div class="right-side-navbar d-flex align-items-center justify-content-end">

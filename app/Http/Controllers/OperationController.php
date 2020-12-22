@@ -79,7 +79,7 @@ class OperationController extends Controller
         $request['user_id'] = auth()->user()->id;
         $operation->update($request->all());
         alert()->success('عملکرد با موفقیت ویرایش شد','متن پیام')->persistent('خیلی خوب');
-        return back();
+        return redirect('/admin/operations');
     }
 
     /**
