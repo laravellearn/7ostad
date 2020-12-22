@@ -31,7 +31,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::resource('/operations','OperationController');
     Route::resource('/targets','TargetController');
     Route::resource('/subtargets','SubtargetController');
-    Route::get('/subtargets/{book_id}/', 'LessongroupController@getBook');
+    Route::get('/subtargets/{book_id}/', 'SubtargetController@getBook');
 
 });
 Auth::routes();
