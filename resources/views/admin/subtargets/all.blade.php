@@ -31,7 +31,7 @@
                                     @foreach($targets as $target)
                                         <option value="{{ $target->id }}">{{ $target->title }}</option>
                                     @endforeach
-                                </select>
+                                </select>4
                             </div>
                             <div class="form-group">
                                 <label class="control-label">انتخاب کتاب*</label>
