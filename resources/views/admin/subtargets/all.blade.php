@@ -31,7 +31,7 @@
                                     @foreach($targets as $target)
                                         <option value="{{ $target->id }}">{{ $target->title }}</option>
                                     @endforeach
-                                </select>4
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">انتخاب کتاب*</label>
@@ -60,7 +60,6 @@
                                             <th>برنامه هدف</th>
                                             <th>کتاب</th>
                                             <th>مبحث</th>
-                                            <th>وضعیت</th>
                                             <th>عملیات</th>
                                         </tr>
                                     </thead>
@@ -71,15 +70,8 @@
                                             <td>{{ $subtarget->target->title }}</td>
                                             <td>{{ $subtarget->book->name }}</td>
                                             <td>{{ $subtarget->topic->name }}</td>
-                                            <td>
-                                                @if($subtarget->status == "1")
-                                                    <span class="badge badge-success">فعال</span>
-                                                @else
-                                                    <span class="badge badge-danger">غیرفعال</span>
-                                                @endif
-                                            </td>
                                             <td style="text-align: center;padding-top: 2px">
-                                                <a href="{{ route('subtargets.edit',['subtarget'=>$subtarget->id]) }}">
+                                                <a href="{{ route('subtargets.edit',['subtarget'=>$subtarget->id]) }}" style="margin-top:2px;margin-left:6px">
                                                     <i class="fa fa-edit" style="font-size:17px;color:green"></i>
                                                 </a>
                                                 <form action="{{ route('subtargets.destroy',['subtarget'=>$subtarget->id]) }}" method="POST">

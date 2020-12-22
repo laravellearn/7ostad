@@ -71,7 +71,7 @@
                                                 @endif
                                             </td>
                                             <td style="text-align: center;padding-top: 2px">
-                                                    <a href="{{ route('lessongroups.edit',['lessongroup'=>$lessongroup->id]) }}">
+                                                    <a href="{{ route('lessongroups.edit',['lessongroup'=>$lessongroup->id]) }}" style="margin-top:2px;margin-left:6px">
                                                         <i class="fa fa-edit" style="font-size:17px;color:green"></i>
                                                     </a>
                                                     <form action="/admin/lessongroups/{{ $lessongroup->id }}" method="POST">

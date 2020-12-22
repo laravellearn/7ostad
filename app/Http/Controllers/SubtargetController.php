@@ -52,7 +52,9 @@ class SubtargetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Subtarget::create($request->all());
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        return back();
     }
 
     /**

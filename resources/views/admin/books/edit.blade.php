@@ -87,7 +87,7 @@
                                             </td>
 
                                             <td style="text-align: center;padding-top: 2px">
-                                                <a href="{{route('books.edit', $book->id)}}">
+                                                <a href="{{route('books.edit', $book->id)}}" style="margin-top:2px;margin-left:6px">
                                                     <i class="fa fa-edit" style="font-size:17px;color:green"></i>
                                                 </a>
                                                 <form action="/admin/books/{{ $book->id }}" method="POST">

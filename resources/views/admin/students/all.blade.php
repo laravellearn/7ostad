@@ -43,7 +43,7 @@
                                         <td>{{ $student->grade->name }}</td>
                                         <td>{{ $student->user->name }}</td>
                                         <td style="text-align: center" class="d-flex">
-                                            <a href="/admin/students/{{ $student->id }}/edit">
+                                            <a href="/admin/students/{{ $student->id }}/edit" style="margin-top:2px;margin-left:6px">
                                                 <i class="fa fa-edit" style="font-size:17px;color:green"></i>
                                             </a>
                                             <form action="/admin/students/{{ $student->id }}" method="POST">
