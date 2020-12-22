@@ -14,6 +14,7 @@
                                 <thead>
                                 <tr>
                                     <th>نام</th>
+                                    <th>نام خانوادگی</th>
                                     <th>جنسیت</th>
                                     <th>کدملی</th>
                                     <th>موبایل</th>
@@ -27,7 +28,8 @@
                                 <tbody>
                                 @foreach($students as $student)
                                     <tr>
-                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->fname }}</td>
+                                        <td>{{ $student->lname }}</td>
                                         <td>
                                             @if($student->gender == "man")
                                                 پسر

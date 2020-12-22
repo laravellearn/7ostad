@@ -24,8 +24,9 @@ class CreateStudentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('stid',45)->unique();
-            $table->string('name',400);
-            $table->string('national_code',10);
+            $table->string('fname',200);
+            $table->string('lname',400);
+            $table->string('national_code',12);
             $table->enum('gender', ['man', 'woman']);
             $table->string('birthdate',45);
             $table->string('mobile',11);

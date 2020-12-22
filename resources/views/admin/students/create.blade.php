@@ -40,16 +40,17 @@
                                 <div class="row" style="height: 84px">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label class="control-label">نام و نام خانوادگی*</label>
-                                            <input type="text" name="name" {{ old('name') }} class="form-control">
+                                            <label class="control-label">نام *</label>
+                                            <input type="text" name="fname" {{ old('fname') }} class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label class="control-label">کدملی*</label>
-                                            <input type="text" class="form-control" {{ old('national_code') }} name="national_code">
+                                            <label class="control-label">نام خانوادگی*</label>
+                                            <input type="text" name="lname" {{ old('lname') }} class="form-control">
                                         </div>
                                     </div><!-- Col -->
+                                  
                                     <div class="col-sm-3">
                                         <div class="form-group mb-50">
                                             <label>تاریخ تولد</label>
@@ -72,6 +73,12 @@
 
                                 </div><!-- Row -->
                                 <div class="row" style="height: 84px">
+                                <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label class="control-label">کدملی*</label>
+                                            <input type="text" class="form-control" {{ old('national_code') }} name="national_code">
+                                        </div>
+                                    </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="control-label">شماره موبایل</label>
@@ -84,12 +91,7 @@
                                             <input type="text" {{ old('phone') }} class="form-control" name="phone">
                                         </div>
                                     </div><!-- Col -->
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">آدرس ایمیل</label>
-                                            <input type="email" name="email" {{ old('email') }} class="form-control">
-                                        </div>
-                                    </div><!-- Col -->
+                                
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>انتخاب مشاور</label>
