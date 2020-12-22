@@ -41,11 +41,11 @@
                                 <li><a href="{{ route('topics.index') }}" {{ request()->is('admin/topics') ? 'style=color:#007bff' : '' }}>مباحث</a></li>
                             </ul>
                         </li>
-                        <li class="treeview <?php if((request()->is('admin/targets'))){echo "active menu-open";} ?>">
+                        <li class="treeview <?php if((request()->is('admin/targets')) || (request()->is('admin/subtargets'))){echo "active menu-open";} ?>">
                             <a href="javascript:void(0)"><i class="zmdi zmdi-archive"></i> <span>برنامه هدف</span> <i class="fa fa-angle-left"></i></a>
                             <ul class="treeview-menu <?php if((request()->is('admin/targets'))) {echo "menu-open";} ?>">
                                 <li><a href="{{ route('targets.index') }}" {{ request()->is('admin/targets') ? 'style=color:#007bff' : '' }}>افزودن برنامه هدف</a></li>
-                                <li><a href="#">افزودن درس به برنامه هدف</a></li>
+                                <li><a href="{{ route('subtargets.index') }}" {{ request()->is('admin/subtargets') ? 'style=color:#007bff' : '' }}>افزودن درس به برنامه هدف</a></li>
                             </ul>
                         </li>
                         <li class="treeview <?php if((request()->is('admin/operations'))){echo "active menu-open";} ?>">

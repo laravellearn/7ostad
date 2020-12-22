@@ -23,13 +23,17 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::resource('/studies','StudyController');
     Route::resource('/grades','GradeController');
     Route::resource('/lessongroups','LessongroupController');
+    Route::get('/lessongroups/{study_id}/', 'LessongroupController@getGrade');
+
     Route::resource('/books','BookController');
     Route::resource('/topics','TopicController');
 
     Route::resource('/operations','OperationController');
     Route::resource('/targets','TargetController');
+    Route::resource('/subtargets','SubtargetController');
+    Route::get('/subtargets/{book_id}/', 'LessongroupController@getBook');
+
 });
-Route::get('/lessongroups/{study_id}/', 'LessongroupController@getGrade');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

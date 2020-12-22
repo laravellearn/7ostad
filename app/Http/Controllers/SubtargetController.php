@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Subtarget;
+use App\Models\Target;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class SubtargetController extends Controller
@@ -14,7 +17,21 @@ class SubtargetController extends Controller
      */
     public function index()
     {
-        //
+        $targets = Target::all();
+        $subtargets = Subtarget::all();
+        $books = Book::all();
+        $topics = Topic::all();
+        return view('admin.subtargets.all')
+            ->with('targets',$targets)
+            ->with('books',$books)
+            ->with('topics',$topics)
+            ->with('subtargets',$subtargets);
+    }
+
+    public function GetBook($book_id)
+    {
+        $grd = Topic::where('book_id', '=', $book_id)->get();
+        return json_encode($grd);
     }
 
     /**
