@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Lessongroup;
 use App\Models\Study;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
@@ -44,6 +45,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         Book::create($request->all());
+        Session::put($request->all());
         alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
         return back();
     }
