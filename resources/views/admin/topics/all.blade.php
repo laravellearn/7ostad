@@ -84,7 +84,7 @@
                                                 @endif
                                             </td>
 
-                                            <td style="text-align: center;padding-top: 2px">
+                                            <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="{{route('topics.edit', $topic->id)}}" style="margin-top:2px;margin-left:6px">
                                                     <i class="fa fa-edit" style="font-size:17px;color:green"></i>
                                                 </a>

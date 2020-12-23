@@ -70,7 +70,7 @@
                                             <td>{{ $subtarget->target->title }}</td>
                                             <td>{{ $subtarget->book->name }}</td>
                                             <td>{{ $subtarget->topic->name }}</td>
-                                            <td style="text-align: center;padding-top: 2px">
+                                            <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="{{ route('subtargets.edit',['subtarget'=>$subtarget->id]) }}" style="margin-top:2px;margin-left:6px">
                                                     <i class="fa fa-edit" style="font-size:17px;color:green"></i>
                                                 </a>

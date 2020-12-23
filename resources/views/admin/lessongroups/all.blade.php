@@ -20,7 +20,7 @@
                                     <select class="form-control form-control-sm mb-3" name="study_id">
                                         @foreach($studies as $study)
                                             <option value="{{ $study->id }}"
-                                              
+
                                                 @if($study->id == Session::get('study_id'))
                                                 selected
                                                 @endif
@@ -70,7 +70,7 @@
                                                     <span class="badge badge-danger">غیر فعال</span>
                                                 @endif
                                             </td>
-                                            <td style="text-align: center;padding-top: 2px">
+                                            <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                     <a href="{{ route('lessongroups.edit',['lessongroup'=>$lessongroup->id]) }}" style="margin-top:2px;margin-left:6px">
                                                         <i class="fa fa-edit" style="font-size:17px;color:green"></i>
                                                     </a>
