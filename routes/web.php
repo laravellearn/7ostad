@@ -30,6 +30,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::resource('/operations','OperationController');
     Route::resource('/targets','TargetController');
     Route::resource('/subtargets','SubtargetController');
+    Route::resource('/motivationals','MotivationalController');
 
 });
 Route::get('/lessongroups/{study_id}/', 'LessongroupController@getGrade');

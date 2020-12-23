@@ -72,7 +72,8 @@
                         <li class="treeview">
                             <a href="javascript:void(0)"><i class="zmdi zmdi-settings text-primary"></i> <span>تنظیمات</span> <i class="fa fa-angle-left"></i></a>
                             <ul class="treeview-menu">
-                                <li><a href="#">سخنان انگیزشی</a></li>
+                            <li><a href="{{ route('motivationals.index') }}" {{ request()->is('admin/motivationals') ? 'style=color:#007bff' : '' }}>سخنان انگیزشی</a></li>
+                              
                             </ul>
                         </li>
                         <form action="{{ route('logout') }}" method="POST">

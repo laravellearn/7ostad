@@ -19,7 +19,6 @@
 <script>
     $(document).ready(function() {
         $('input[name="birthdate"]').on('click', function() {
-
             $("#pdpF2").persianDatepicker({
                 formatDate: "YYYY-0M-0D"
 
