@@ -8,23 +8,11 @@
 <script src="/js/default-assets/select2.min.js"></script>
 <link rel="stylesheet" href="/css/default-assets/select2.min.css">
 <script>
-    $("#pdpF2").persianDatepicker();
-</script>
-<script>
     $(document).ready(function() {
         $('.my_select').select2();
-    });
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('input[name="birthdate"]').on('click', function() {
-
-            $("#pdpF2").persianDatepicker({
-                formatDate: "YYYY-0M-0D"
-
+        $("#pdpF2").persianDatepicker({
+            formatDate: "YYYY/0M/0D",
             });
-        })
     });
 </script>
 <style>
@@ -71,7 +59,7 @@
                                 <div class="col-sm-3">
                                     <div class="form-group mb-50">
                                         <label>تاریخ تولد</label>
-                                        <input type="text" {{ old('birthdate') }} name="birthdate" id="pdpF2" class="form-control usage">
+                                        <input type="text" {{ old('birthdate') }} name="birthdate" id="pdpF2" class="form-control">
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
@@ -127,7 +115,7 @@
                                         <label>رشته تحصیلی</label>
                                         <select name="study_id" class="form-control form-control-sm mb-3">
                                             @foreach($studies as $study)
-                                            <option value="{{ $study->id }}">{{ $study->name }}</option>
+                                                <option value="{{ $study->id }}">{{ $study->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -136,9 +124,6 @@
                                     <div class="form-group">
                                         <label>پایه تحصیلی</label>
                                         <select name="grade_id" class="form-control form-control-sm mb-3">
-                                            @foreach($grades as $grade)
-                                            <option value="{{ $grade->id }}">{{ $grade->name }}</option>
-                                            @endforeach
                                         </select>
                                     </div>
                                 </div><!-- Col -->
@@ -175,4 +160,29 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="study_id"]').on('change', function() {
+            var study_id = $(this).val();
+            if (study_id) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{url('/students/create')}}/" + study_id,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data);
+                        var d = $('select[name="grade_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="grade_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+</script>
+
 @endsection

@@ -31,9 +31,15 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::resource('/targets','TargetController');
     Route::resource('/subtargets','SubtargetController');
 
+    //Plans
+    Route::get('/plans/students','PlanController@getStudents');
+    Route::get('/plans/student/{student}','PlanController@getStudent');
+    Route::post('/plans/targets/{student}','PlanController@getTargets');
+
 });
 Route::get('/lessongroups/{study_id}/', 'LessongroupController@getGrade');
 Route::get('/subtargets/{book_id}/', 'SubtargetController@getBook');
+Route::get('/students/create/{study_id}/', 'StudentController@getGrade');
 
 Auth::routes();
 

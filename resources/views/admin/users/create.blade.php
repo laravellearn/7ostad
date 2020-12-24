@@ -8,6 +8,14 @@
             left: 25%!important;
         }
     </style>
+    <script>
+        $(document).ready(function() {
+            $('.my_select').select2();
+            $("#pdpF2").persianDatepicker({
+                formatDate: "YYYY/0M/0D",
+            });
+        });
+    </script>
 
 @endsection
 
@@ -78,7 +86,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group mb-50">
                                             <label>تاریخ تولد</label>
-                                            <input type="text" name="birthdate" value="{{ old('birthdate') }}"  class="form-control usage">
+                                            <input type="text" name="birthdate" value="{{ old('birthdate') }}" id="pdpF2"  class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">

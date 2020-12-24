@@ -16,7 +16,7 @@ class CreateStudiesTable extends Migration
         Schema::create('studies', function (Blueprint $table) {
             $table->id();
             $table->string('name',100);
-            $table->boolean('status')->default('true');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
