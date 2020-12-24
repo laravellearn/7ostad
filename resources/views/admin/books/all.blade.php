@@ -43,11 +43,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"> نام کتاب*</label>
-                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" required>
+                                    <input type="text" name="name" value="{{ Session::get('name') }}" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"> رنگ*</label>
-                                    <input type="text" id="horizontal-colorpicker" name="color" value="{{ old('color') }}" class="form-control colorpicker-element" required>
+                                    <input type="text" id="horizontal-colorpicker" name="color" value="{{ Session::get('name') }}" class="form-control colorpicker-element" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>
                             </form>

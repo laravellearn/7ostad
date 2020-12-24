@@ -7,6 +7,7 @@ use App\Models\Lessongroup;
 use App\Models\Study;
 use App\Models\Topic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TopicController extends Controller
 {
@@ -48,6 +49,7 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         Topic::create($request->all());
+        Session::put($request->all());
         alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
         return back();
     }

@@ -10,8 +10,20 @@
 <script>
     $(document).ready(function() {
         $('.my_select').select2();
+<<<<<<< HEAD
         $("#pdpF2").persianDatepicker({
             formatDate: "YYYY/0M/0D",
+=======
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('input[name="birthdate"]').on('click', function() {
+            $("#pdpF2").persianDatepicker({
+                formatDate: "YYYY-0M-0D"
+
+>>>>>>> 2e12842168f2e3af32a228640c243d85a222735c
             });
     });
 </script>

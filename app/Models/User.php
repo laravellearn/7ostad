@@ -60,4 +60,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Target::class);
     }
+    public function motivationals()
+    {
+        return $this->hasMany(Motivational::class, 'user_id');
+    }
 }

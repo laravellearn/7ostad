@@ -30,6 +30,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::resource('/operations','OperationController');
     Route::resource('/targets','TargetController');
     Route::resource('/subtargets','SubtargetController');
+    Route::resource('/motivationals','MotivationalController');
 
     //Plans
     Route::get('/plans/students','PlanController@getStudents');

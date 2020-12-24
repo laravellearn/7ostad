@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"> نام مبحث*</label>
-                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" required>
+                                    <input type="text" name="name" value="{{ Session::get('name') }}" class="form-control" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>
                             </form>

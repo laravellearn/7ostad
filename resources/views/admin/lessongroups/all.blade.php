@@ -13,17 +13,23 @@
                         <div class="card-body">
                             <h4 class="card-title mb-2">افزودن گروه درسی</h4>
                             <hr>
-                            <form action=""  method="POST">
+                            <form action="" method="POST">
                                 @CSRF
                                 <div class="form-group">
                                     <label class="control-label">رشته تحصیلی*</label>
                                     <select class="form-control form-control-sm mb-3" name="study_id">
                                         @foreach($studies as $study)
+<<<<<<< HEAD
                                             <option value="{{ $study->id }}"
 
                                                 @if($study->id == Session::get('study_id'))
                                                 selected
                                                 @endif
+=======
+                                        <option value="{{ $study->id }}" @if($study->id == Session::get('study_id'))
+                                            selected
+                                            @endif
+>>>>>>> 2e12842168f2e3af32a228640c243d85a222735c
                                             >{{ $study->name }}</option>
                                         @endforeach
                                     </select>
@@ -31,11 +37,17 @@
                                 <div class="form-group">
                                     <label class="control-label">پایه تحصیلی*</label>
                                     <select class="form-control form-control-sm mb-3" name="grade_id">
+                                        @foreach($grades as $grade)
+                                        <option value="{{ $grade->id }}" @if($grade->id == Session::get('grade_id'))
+                                            selected
+                                            @endif
+                                            >{{ $grade->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">گروه درسی*</label>
-                                    <input type="text" name="name" value="{{ old('name') }}" required class="form-control">
+                                    <input type="text" name="name" value="{{ Session::get('name') }}" required class="form-control">
                                 </div>
                                 <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>
                             </form>
@@ -60,6 +72,7 @@
                                 <tbody>
                                     <tr>
                                         @foreach($lessongroups as $lessongroup)
+<<<<<<< HEAD
                                             <td>{{ $lessongroup->grade->study->name }}</td>
                                             <td>{{ $lessongroup->grade->name }}</td>
                                             <td>{{ $lessongroup->name }}</td>
@@ -81,6 +94,29 @@
                                                     </form>
                                             </td>
                                         </tr>
+=======
+                                        <td>{{ $lessongroup->grade->study->name }}</td>
+                                        <td>{{ $lessongroup->grade->name }}</td>
+                                        <td>{{ $lessongroup->name }}</td>
+                                        <td>
+                                            @if($lessongroup->status == 1)
+                                            <span class="badge badge-success">فعال</span>
+                                            @else
+                                            <span class="badge badge-danger">غیر فعال</span>
+                                            @endif
+                                        </td>
+                                        <td style="text-align: center;padding-top: 2px">
+                                            <a href="{{ route('lessongroups.edit',['lessongroup'=>$lessongroup->id]) }}" style="margin-top:2px;margin-left:6px">
+                                                <i class="fa fa-edit" style="font-size:17px;color:green"></i>
+                                            </a>
+                                            <form action="/admin/lessongroups/{{ $lessongroup->id }}" method="POST">
+                                                @CSRF
+                                                @method('delete')
+                                                <button type="submit" onclick="return confirm('آيا براي حذف این رکورد مطمئن هستيد؟')" class="fa fa-remove" style="font-size:20px;color:red;border: none"></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+>>>>>>> 2e12842168f2e3af32a228640c243d85a222735c
                                     @endforeach
                                 </tbody>
                             </table>
