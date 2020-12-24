@@ -16,7 +16,7 @@ class CreateLessongroupsTable extends Migration
         Schema::create('lessongroups', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('grade_id')->unsigned();
+            $table->integer('grade_id')->unsigned();
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
 
             $table->string('name',100);

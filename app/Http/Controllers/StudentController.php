@@ -146,4 +146,10 @@ class StudentController extends Controller
         alert()->success('دانش آموز موردنظر با موفقیت حذف گردید','متن پیام')->persistent('خیلی خوب');
         return back();
     }
+
+    public function getGrade($study_id)
+    {
+        $grd = Grade::where('study_id', '=', $study_id)->get();
+        return json_encode($grd);
+    }
 }

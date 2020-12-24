@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','لیست دانش آموزان')
+@section('title','لیست دانش آموزان من')
 @section('content')
 <!-- Main Content Area -->
 <div class="main-content">
@@ -9,7 +9,7 @@
                 <div class="col-12 box-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-2">لیست دانش آموزان</h4>
+                            <h4 class="card-title mb-2">لیست دانش آموزان من</h4>
                             <hr>
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                 <thead>
@@ -44,13 +44,12 @@
                                         <td>{{ $student->grade->name }}</td>
                                         <td>{{ $student->user->name }}</td>
                                         <td style="text-align: center" class="d-flex">
-                                            <a href="/admin/students/{{ $student->id }}/edit" style="margin-top:2px;margin-left:6px">
-                                                <i class="fa fa-edit" style="font-size:17px;color:green"></i>
+                                            <a href="/admin/plans/student/{{ $student->id }}" style="margin-top:2px;margin-left:6px">
+                                                <i class="fa fa-eye" style="font-size:17px;color:green"></i>
                                             </a>
-                                            <form action="/admin/students/{{ $student->id }}" method="POST">
+                                            <form action="/admin/plans/targets/{{ $student->id }}" method="POST">
                                                 @CSRF
-                                                @method('delete')
-                                                <button type="submit" onclick="return confirm('آيا براي حذف این رکورد مطمئن هستيد؟')" class="fa fa-remove " style="font-size:20px;color:red;border: none">
+                                                <button type="submit" class="fa fa-table " style="font-size:20px;color:steelblue;border: none">
                                                 </button>
                                             </form>
                                         </td>

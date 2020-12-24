@@ -62,11 +62,11 @@
                                                 echo "active menu-open";
                                             } ?>">
                             <a href="javascript:void(0)"><i class="zmdi zmdi-archive text-success"></i> <span>برنامه ریزی</span> <i class="fa fa-angle-left"></i></a>
-                            <ul class="treeview-menu <?php if ((request()->is('admin/operations'))) {
+                            <ul class="treeview-menu <?php if ((request()->is('admin/operations')) || (request()->is('/admin/plans/students'))) {
                                                             echo "menu-open";
                                                         } ?>">
                                 <li><a href="{{ route('operations.index') }}" {{ request()->is('admin/operations') ? 'style=color:#007bff' : '' }}>عملکردها</a></li>
-                                <li><a href="#">جدول برنامه ریزی</a></li>
+                                <li><a href="/admin/plans/students" {{ request()->is('admin/plans/students') ? 'style=color:#007bff' : '' }}>جدول برنامه ریزی</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
