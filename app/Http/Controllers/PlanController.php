@@ -95,6 +95,7 @@ class PlanController extends Controller
     public function getStudents()
     {
         $user = Auth::user();
+   
         if ($user->user_type != 'admin'){
             $students = Student::WHERE('user_id','=',$user->id)->get();
         }else{
@@ -120,7 +121,8 @@ class PlanController extends Controller
     }
 
     public function getTargets(request $request,student $student)
-    {
+    { 
+        
         $user = Auth::user();
         $targets = Target::all();
         if ($student->user_id == $user->id || $user->user_type == 'admin') {
@@ -135,6 +137,8 @@ class PlanController extends Controller
 
     public function getPlansTable(student $student, target $target)
     {
+        
+      
         $operations = Operation::all();
         $books = Book::all();
         $topics = Topic::all();

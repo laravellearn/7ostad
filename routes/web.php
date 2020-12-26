@@ -33,10 +33,10 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::resource('/motivationals','MotivationalController');
 
     //Plans
-    Route::get('/plans/students','PlanController@getStudents');
-    Route::get('/plans/student/{student}','PlanController@getStudent');
-    Route::post('/plans/targets/{student}','PlanController@getTargets');
-    Route::get('/plans/students/{student}/target/{target}','PlanController@getPlansTable');
+    Route::match(['get', 'post'],'/plans/students','PlanController@getStudents')->name('plans.students');
+    Route::match(['get', 'post'],'/plans/student/{student}','PlanController@getStudent');
+    Route::match(['get', 'post'],'/plans/targets/{student}','PlanController@getTargets')->name('plans.target');
+    Route::match(['get', 'post'],'/plans/students/{student}/targets/{target}','PlanController@getPlansTable')->name('plans.student.target');
 
 });
 Route::get('/lessongroups/{study_id}/', 'LessongroupController@getGrade');

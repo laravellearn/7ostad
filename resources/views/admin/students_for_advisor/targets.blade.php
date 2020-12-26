@@ -29,8 +29,9 @@
                                                         <b>تاریخ پایان: </b>{{ $target->end_date }}
                                                     </p>
                                                     <p class="text-center">
-                                                        <form action="/admin/plans/students/{{ $student->id }}/target/{{ $target->id }}" method="POST">
+                                                        <form action="{{ route('plans.student.target', [$student->id, $target->id]) }}" method="POST">
                                                             @CSRF
+                                                           
                                                             <button type="submit" class="btn btn-primary full-width">تنظیم برنامه</button>
                                                         </form>
                                                     </p>
