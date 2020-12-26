@@ -13,6 +13,7 @@
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                 <thead>
                                 <tr>
+                                    <th>شناسه</th>
                                     <th>نام</th>
                                     <th>جنسیت</th>
                                     <th>کدملی</th>
@@ -26,6 +27,7 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr>
+                                        <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>
                                             @if($user->gender == "man")

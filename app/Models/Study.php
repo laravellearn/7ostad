@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Study extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','status'];
+    protected $fillable = ['name'];
 
     public function grades()
     {

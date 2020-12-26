@@ -9,7 +9,7 @@ class Lessongroup extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','status','grade_id'];
+    protected $fillable = ['name','grade_id'];
 
     public function grade()
     {

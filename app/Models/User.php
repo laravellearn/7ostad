@@ -64,4 +64,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Motivational::class, 'user_id');
     }
+
 }

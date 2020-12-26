@@ -27,8 +27,7 @@
                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
                                     <tr>
-                                        <th>نام</th>
-                                        <th>وضعیت</th>
+                                        <th>رشته تحصیلی</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -37,13 +36,6 @@
                                     @foreach($studies as $study)
                                         <tr>
                                             <td>{{ $study->name }}</td>
-                                            <td>
-                                                @if($study->status == "1")
-                                                    فعال
-                                                @else
-                                                    غیرفعال
-                                                @endif
-                                            </td>
                                             <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="/admin/studies/{{ $study->id }}/edit"  style="margin-top:2px;margin-left:6px">
                                                     <i class="fa fa-edit" style="font-size:17px;color:green"></i>

@@ -31,8 +31,8 @@ class StudentController extends Controller
     public function create()
     {
         $users = User::WHERE('user_type','advisor')->get();
-        $grades = Grade::WHERE('status',true)->get();
-        $studies = Study::WHERE('status',true)->get();
+        $grades = Grade::all();
+        $studies = Study::all();
         return view('admin.students.create')
             ->with('users',$users)
             ->with('grades',$grades)
@@ -48,13 +48,13 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'grade_id' => 'numeric',
-            'study_id' => 'numeric',
-            'user_id' => 'numeric',
-            'fname' => ['required', 'string', 'max:110'],
-            'lname' => ['required', 'string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:students','nullable'],
-            'national_code' => 'min:10|max:12',
+            'grade_id' => 'numeric|required',
+            'study_id' => 'numeric|required',
+            'user_id' => 'numeric|required',
+            'fname' => ['required', 'max:110'],
+            'lname' => ['required', 'max:255'],
+            'email' => ['email', 'max:255', 'unique:students','nullable'],
+            'national_code' => 'min:10|max:12|required',
             'birthdate' => 'max:10|required',
             'address' => 'required',
             'description' => 'nullable',
@@ -68,7 +68,7 @@ class StudentController extends Controller
         ]);
         $request['stid'] = rand(11111111,99999999);
         Student::create($request->all());
-        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -92,8 +92,8 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         $users = User::WHERE('status',1)->get();
-        $studies = Study::WHERE('status',1)->get();
-        $grades = Grade::WHERE('status',1)->get();
+        $studies = Study::all();
+        $grades = Grade::all();
         return view('admin.students.edit')
             ->with('student',$student)
             ->with('users',$users)
@@ -111,13 +111,13 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $request->validate([
-            'grade_id' => 'numeric',
-            'study_id' => 'numeric',
-            'user_id' => 'numeric',
-            'fname' => ['required', 'string', 'max:110'],
-            'lname' => ['required', 'string', 'max:255'],
-            'email' => ['nullable', 'string', 'email', 'max:255', Rule::unique('students','email')->ignore($student)],
-            'national_code' => 'min:10|max:12',
+            'grade_id' => 'numeric|required',
+            'study_id' => 'numeric|required',
+            'user_id' => 'numeric|required',
+            'fname' => ['required', 'max:110'],
+            'lname' => ['required', 'max:255'],
+            'email' => ['email', 'max:255', 'unique:students','nullable'],
+            'national_code' => 'min:10|max:12|required',
             'birthdate' => 'max:10|required',
             'address' => 'required',
             'description' => 'nullable',
@@ -130,7 +130,7 @@ class StudentController extends Controller
             'status' => 'boolean'
         ]);
         $student->update($request->all());
-        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -143,7 +143,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        alert()->success('دانش آموز موردنظر با موفقیت حذف گردید','متن پیام')->persistent('خیلی خوب');
+        alert()->success('دانش آموز موردنظر با موفقیت حذف گردید','متن پیام');
         return back();
     }
 

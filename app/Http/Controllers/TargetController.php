@@ -39,7 +39,7 @@ class TargetController extends Controller
     {
         $request['user_id'] = Auth::user()->id;
         Target::create($request->all());
-        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -78,7 +78,7 @@ class TargetController extends Controller
     public function update(Request $request, Target $target)
     {
         $target->update($request->all());
-        alert()->success('ویرایش برنامه هدف با موفقیت انجام شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('ویرایش برنامه هدف با موفقیت انجام شد','متن پیام');
         return redirect('/admin/targets');
     }
 
@@ -91,7 +91,7 @@ class TargetController extends Controller
     public function destroy(Target $target)
     {
         $target->delete();
-        alert()->success('برنامه هدف با موفقیت حذف شد', 'متن پیام')->persistent('خیلی خوب');
+        alert()->success('برنامه هدف با موفقیت حذف شد', 'متن پیام');
         return redirect('admin/targets');
     }
 }

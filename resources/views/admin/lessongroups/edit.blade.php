@@ -14,6 +14,14 @@
                             <form action="{{route('lessongroups.update', $lessongroup->id)}}" method="POST">
                                 @CSRF
                                 @method('PATCH')
+                                @if($errors->any())
+                                    <ul class="alert alert-danger" role="alert">
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+
                                 <div class="form-group">
                                     <label class="control-label">رشته تحصیلی*</label>
                                     <select class="form-control form-control-sm mb-3" name="study_id">
@@ -57,7 +65,6 @@
                                     <th>رشته تحصیلی</th>
                                     <th>پایه تحصیلی</th>
                                     <th>گروه درسی</th>
-                                    <th>وضعیت</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -68,13 +75,6 @@
                                         <td>{{ $lessongroup->grade->study->name }}</td>
                                         <td>{{ $lessongroup->grade->name }}</td>
                                         <td>{{ $lessongroup->name }}</td>
-                                        <td>
-                                            @if($lessongroup->status == 1)
-                                                <span class="badge badge-success">فعال</span>
-                                            @else
-                                                <span class="badge badge-danger">غیر فعال</span>
-                                            @endif
-                                        </td>
                                         <td style="text-align: center;padding-top: 2px" class="d-flex">
                                             <a href="{{ route('lessongroups.edit',['lessongroup'=>$lessongroup->id]) }}" style="margin-top:2px;margin-left:6px">
                                                 <i class="fa fa-edit" style="font-size:17px;color:green"></i>

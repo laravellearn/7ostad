@@ -38,7 +38,7 @@ class OperationController extends Controller
     {
         $request['user_id'] = auth()->user()->id;
         Operation::create($request->all());
-        alert()->success('عملکرد با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('عملکرد با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -78,7 +78,7 @@ class OperationController extends Controller
     {
         $request['user_id'] = auth()->user()->id;
         $operation->update($request->all());
-        alert()->success('عملکرد با موفقیت ویرایش شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('عملکرد با موفقیت ویرایش شد','متن پیام');
         return redirect('/admin/operations');
     }
 
@@ -91,7 +91,7 @@ class OperationController extends Controller
     public function destroy(Operation $operation)
     {
         $operation->delete();
-        alert()->success('عملکرد با موفقیت حذف شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('عملکرد با موفقیت حذف شد','متن پیام');
         return redirect('/admin/operations');
     }
 }

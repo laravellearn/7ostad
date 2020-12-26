@@ -50,7 +50,7 @@ class TopicController extends Controller
     {
         Topic::create($request->all());
         Session::put($request->all());
-        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -93,7 +93,7 @@ class TopicController extends Controller
     public function update(Request $request, Topic $topic)
     {
         $topic->update($request->all());
-        alert()->success('ویرایش مبحث با موفقیت انجام شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('ویرایش مبحث با موفقیت انجام شد','متن پیام');
         return redirect('/admin/topics');
     }
 
@@ -106,7 +106,7 @@ class TopicController extends Controller
     public function destroy(Topic $topic)
     {
         $topic->delete();
-        alert()->success('مبحث با موفقیت حذف شد', 'متن پیام')->persistent('خیلی خوب');
+        alert()->success('مبحث با موفقیت حذف شد', 'متن پیام');
         return redirect('admin/topics');
     }
 }

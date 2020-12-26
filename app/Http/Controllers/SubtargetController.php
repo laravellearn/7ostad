@@ -53,7 +53,7 @@ class SubtargetController extends Controller
     public function store(Request $request)
     {
         Subtarget::create($request->all());
-        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -76,7 +76,16 @@ class SubtargetController extends Controller
      */
     public function edit(Subtarget $subtarget)
     {
-        //
+        $targets = Target::all();
+        $subtargets = Subtarget::all();
+        $books = Book::all();
+        $topics = Topic::all();
+        return view('admin.subtargets.edit')
+            ->with('targets',$targets)
+            ->with('books',$books)
+            ->with('topics',$topics)
+            ->with('subtargets',$subtargets)
+            ->with('subtarget',$subtarget);
     }
 
     /**
@@ -88,7 +97,9 @@ class SubtargetController extends Controller
      */
     public function update(Request $request, Subtarget $subtarget)
     {
-        //
+        $subtarget->update($request->all());
+        alert()->success('اطلاعات با موفقیت ویرایش شد','متن پیام');
+        return redirect('/admin/subtargets');
     }
 
     /**
@@ -99,6 +110,8 @@ class SubtargetController extends Controller
      */
     public function destroy(Subtarget $subtarget)
     {
-        //
+        $subtarget->delete();
+        alert()->success('رکورد با موفقیت حذف شد','متن پیام');
+        return back();
     }
 }

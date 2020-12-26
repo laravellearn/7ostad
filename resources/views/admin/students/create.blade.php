@@ -2,31 +2,19 @@
 @section('title','ثبت دانش آموز جدید')
 
 @section('style')
-<link type="text/css" rel="stylesheet" href="/css/persianDatepicker-default.css" />
 <script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="/js/persianDatepicker.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
 <script src="/js/default-assets/select2.min.js"></script>
 <link rel="stylesheet" href="/css/default-assets/select2.min.css">
 <script>
     $(document).ready(function() {
         $('.my_select').select2();
-<<<<<<< HEAD
         $("#pdpF2").persianDatepicker({
             formatDate: "YYYY/0M/0D",
-=======
-    });
+    })
+    })
 </script>
 
-<script>
-    $(document).ready(function() {
-        $('input[name="birthdate"]').on('click', function() {
-            $("#pdpF2").persianDatepicker({
-                formatDate: "YYYY-0M-0D"
-
->>>>>>> 2e12842168f2e3af32a228640c243d85a222735c
-            });
-    });
-</script>
 <style>
     .pdp-default {
         left: 25% !important;
@@ -58,20 +46,20 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label class="control-label">نام *</label>
-                                        <input type="text" name="fname" {{ old('fname') }} class="form-control">
+                                        <input type="text" name="fname" value="{{ old('fname') }}" class="form-control">
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label class="control-label">نام خانوادگی*</label>
-                                        <input type="text" name="lname" {{ old('lname') }} class="form-control">
+                                        <input type="text" name="lname" value="{{ old('lname') }}" class="form-control">
                                     </div>
                                 </div><!-- Col -->
 
                                 <div class="col-sm-3">
                                     <div class="form-group mb-50">
                                         <label>تاریخ تولد</label>
-                                        <input type="text" {{ old('birthdate') }} name="birthdate" id="pdpF2" class="form-control">
+                                        <input type="text" value="{{ old('birthdate') }}" name="birthdate" id="pdpF2" class="form-control">
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
@@ -93,19 +81,19 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label class="control-label">کدملی*</label>
-                                        <input type="text" class="form-control" {{ old('national_code') }} name="national_code">
+                                        <input type="number" class="form-control" value="{{ old('national_code') }}" name="national_code">
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label class="control-label">شماره موبایل</label>
-                                        <input type="text" {{ old('mobile') }} name="mobile" class="form-control">
+                                        <input type="number" value="{{ old('mobile') }}" name="mobile" class="form-control">
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label class="control-label">تلفن ثابت</label>
-                                        <input type="text" {{ old('phone') }} class="form-control" name="phone">
+                                        <label class="control-la"bel">تلفن ثابت</label>
+                                        <input type="number" value="{{ old('phone') }}" class="form-control" name="phone">
                                     </div>
                                 </div><!-- Col -->
 
@@ -143,19 +131,19 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label class="control-label">مدرسه محل تحصیل</label>
-                                        <input type="text" name="school" {{ old('school') }} class="form-control">
+                                        <input type="text" name="school" value="{{ old('school') }}" class="form-control">
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label class="control-label">کد پستی</label>
-                                        <input type="text" name="zipcode" {{ old('zipcode') }} class="form-control">
+                                        <input type="text" name="zipcode" value="{{ old('zipcode') }}" class="form-control">
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label class="control-label">آدرس منزل</label>
-                                        <input type="text" name="address" {{ old('address') }} class="form-control">
+                                        <input type="text" name="address" value="{{ old('address') }}" class="form-control">
                                     </div>
                                 </div><!-- Col -->
                             </div><!-- Row -->
@@ -173,28 +161,5 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="study_id"]').on('change', function() {
-            var study_id = $(this).val();
-            if (study_id) {
-                $.ajax({
-                    type: "GET",
-                    url: "{{url('/students/create')}}/" + study_id,
-                    dataType: "json",
-                    success: function(data) {
-                        console.log(data);
-                        var d = $('select[name="grade_id"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="grade_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
-                        });
-                    },
-                });
-            } else {
-                alert('danger');
-            }
-        });
-    });
-</script>
-
+number
 @endsection

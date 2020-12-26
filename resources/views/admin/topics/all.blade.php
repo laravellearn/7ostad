@@ -30,7 +30,9 @@
                                     <label class="control-label">رشته تحصیلی-پایه تحصیلی-گروه درسی-کتاب*</label>
                                     <select class="form-control form-control-sm mb-3 my_select" name="book_id">
                                         @foreach($books as $book)
-                                            <option value="{{ $book->id }}">
+                                            <option value="{{ $book->id }}" @if($book->id == Session::get('book_id'))
+                                            selected
+                                                @endif>
                                                 <?php
                                                     echo
                                                         $book->lessongroup->grade->study->name ." -> ".
@@ -44,7 +46,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"> نام مبحث*</label>
-                                    <input type="text" name="name" value="{{ Session::get('name') }}" class="form-control" required>
+                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>
                             </form>
@@ -63,7 +65,6 @@
                                         <th>گروه درسی</th>
                                         <th> نام کتاب</th>
                                         <th>مبحث</th>
-                                        <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                 </thead>
@@ -76,13 +77,6 @@
                                             <td>{{$topic->book->lessongroup->name}}</td>
                                             <td>{{$topic->book->name}}</td>
                                             <td>{{$topic->name}}</td>
-                                            <td>
-                                                @if($topic->status == "1")
-                                                    <span class="badge badge-success">فعال</span>
-                                                @else
-                                                    <span class="badge badge-danger badge-md">فعال</span>
-                                                @endif
-                                            </td>
 
                                             <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="{{route('topics.edit', $topic->id)}}" style="margin-top:2px;margin-left:6px">

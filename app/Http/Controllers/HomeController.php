@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::orderBy('id','DESC')->get();
         return view('admin.dashboard')
             ->with('students',$students);
     }

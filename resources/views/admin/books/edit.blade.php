@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','ویرایش')
+@section('title','ویرایش کتاب')
 @section('style')
     <script src="/js/jquery.min.js"></script>
     <script src="/js/default-assets/select2.min.js"></script>
@@ -58,7 +58,7 @@
                     <div class="col-8 box-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title mb-2">گروه های درسی</h4>
+                                <h4 class="card-title mb-2">لیست کتاب ها</h4>
                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
                                     <tr>
@@ -66,7 +66,6 @@
                                         <th>پایه تحصیلی </th>
                                         <th>گروه درسی</th>
                                         <th> نام کتاب</th>
-                                        <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -78,13 +77,6 @@
                                             <td>{{$book->lessongroup->grade->name}}</td>
                                             <td>{{$book->lessongroup->name}}</td>
                                             <td>{{$book->name}}</td>
-                                            <td>
-                                                @if($book->status == "1")
-                                                    <span class="badge badge-success">فعال</span>
-                                                @else
-                                                    <span class="badge badge-danger badge-md">فعال</span>
-                                                @endif
-                                            </td>
 
                                             <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="{{route('books.edit', $book->id)}}" style="margin-top:2px;margin-left:6px">

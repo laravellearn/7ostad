@@ -16,7 +16,9 @@
                                 <label class="control-label">رشته تحصیلی*</label>
                                 <select class="form-control form-control-sm mb-3" name="study_id">
                                     @foreach($studies as $study)
-                                        <option value="{{ $study->id }}" <?php if (isset($study_id_select) && $study->id==$study_id_select){ echo 'selected'; }?>>{{ $study->name }}</option>
+                                        <option value="{{ $study->id }}"  @if($study->id == Session::get('study_id'))
+                                        selected
+                                            @endif>{{ $study->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -37,7 +39,6 @@
                                     <tr>
                                         <th>پایه تحصیلی</th>
                                         <th>رشته تحصیلی</th>
-                                        <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -48,13 +49,6 @@
                                             <td>{{ $grade->name }}</td>
                                             <td>
                                                 {{ $grade->study->name }}
-                                            </td>
-                                            <td>
-                                                @if($grade->status == "1")
-                                                    فعال
-                                                @else
-                                                    غیرفعال
-                                                @endif
                                             </td>
                                             <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="/admin/grades/{{ $grade->id }}/edit" style="margin-top:2px;margin-left:6px">

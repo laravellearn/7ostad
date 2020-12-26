@@ -8,6 +8,14 @@
             left: 65%!important;
         }
     </style>
+    <script>
+        $(document).ready(function() {
+            $("#input3, #span3, #input4, #span4").persianDatepicker({
+                formatDate: "YYYY/0M/0D",
+            });
+        });
+    </script>
+
 @endsection
 
 @section('content')
@@ -27,12 +35,15 @@
                                 <input type="text" name="title" value="{{ old('title') }}" required class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>تاریخ شروع</label>
-                                <input type="text" {{ old('start_date') }} name="start_date" required  class="form-control usage">
+                                <label>تاریخ شروع*</label>
+                                <input type="text" id="input3" value="{{ old('start_date') }}" name="start_date" required  class="form-control start_date">
+                                <span id="span3"></span>
                             </div>
+
                             <div class="form-group">
-                                <label>تاریخ پایان</label>
-                                <input type="text" {{ old('end_date') }} name="end_date" required  class="form-control usage">
+                                <label>تاریخ پایان*</label>
+                                <input type="text" id="input4" value="{{ old('end_date') }}" name="end_date" required  class="form-control">
+                                <span id="span4"></span>
                             </div>
 
                             <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>

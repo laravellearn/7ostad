@@ -64,7 +64,6 @@
                                         <th>گروه درسی</th>
                                         <th> نام کتاب</th>
                                         <th>مبحث</th>
-                                        <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -77,13 +76,6 @@
                                             <td>{{$topic->book->lessongroup->name}}</td>
                                             <td>{{$topic->book->name}}</td>
                                             <td>{{$topic->name}}</td>
-                                            <td>
-                                                @if($topic->status == "1")
-                                                    <span class="badge badge-success">فعال</span>
-                                                @else
-                                                    <span class="badge badge-danger badge-md">فعال</span>
-                                                @endif
-                                            </td>
 
                                             <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="{{route('topics.edit', $topic->id)}}" style="margin-top:2px;margin-left:6px">

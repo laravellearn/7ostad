@@ -37,7 +37,7 @@ class StudyController extends Controller
     public function store(Request $request)
     {
         Study::create($request->all());
-        alert()->success('پایه تحصیلی با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('رشته تحصیلی با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -76,7 +76,7 @@ class StudyController extends Controller
     public function update(Request $request, Study $study)
     {
         $study->update($request->all());
-        alert()->success('ویرایش پایه تحصیلی با موفقیت انجام شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('ویرایش رشته تحصیلی با موفقیت انجام شد','متن پیام');
         return redirect('/admin/studies');
     }
 
@@ -89,7 +89,7 @@ class StudyController extends Controller
     public function destroy(Study $study)
     {
         $study->delete();
-        alert()->success('پایه تحصیلی با موفقیت حذف شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('رشته تحصیلی با موفقیت حذف شد','متن پیام');
         return back();
     }
 }

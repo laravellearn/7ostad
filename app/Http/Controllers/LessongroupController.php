@@ -50,9 +50,14 @@ class LessongroupController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'study_id' => 'numeric|required',
+            'grade_id' => 'numeric|required',
+        ]);
+
         Lessongroup::create($request->all());
         Session::put($request->all());
-        alert()->success('گروه درسی با موفقیت ثبت شد', 'متن پیام')->persistent('خیلی خوب');
+        alert()->success('گروه درسی با موفقیت ثبت شد', 'متن پیام');
         return back();
     }
 
@@ -94,8 +99,13 @@ class LessongroupController extends Controller
      */
     public function update(Request $request, Lessongroup $lessongroup)
     {
+        $request->validate([
+            'study_id' => 'numeric|required',
+            'grade_id' => 'numeric|required',
+        ]);
+
         $lessongroup->update($request->all());
-        alert()->success('اطلاعات با موفقیت ویرایش شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ویرایش شد','متن پیام');
         return redirect('/admin/lessongroups');
     }
 
@@ -108,7 +118,7 @@ class LessongroupController extends Controller
     public function destroy(Lessongroup $lessongroup)
     {
         $lessongroup->delete();
-        alert()->success('گروه درسی با موفقیت حذف شد', 'متن پیام')->persistent('خیلی خوب');
+        alert()->success('گروه درسی با موفقیت حذف شد', 'متن پیام');
         return back();
     }
 }

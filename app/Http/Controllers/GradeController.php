@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Grade;
 use App\Models\Study;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class GradeController extends Controller
 {
@@ -15,7 +16,7 @@ class GradeController extends Controller
      */
     public function index(Request $request)
     {
-        $studies = Study::WHERE('status',true)->get();
+        $studies = Study::all();
         $grades = Grade::all();
         return view('admin.grades.all')
             ->with('studies',$studies)
@@ -40,11 +41,10 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
+        Session::put($request->all());
         Grade::create($request->all());
-        alert()->success('رشته تحصیلی با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
-        $study_id_select = $request->session()->put('study_id');
-        dd($study_id_select);
-        return back()->with('study_id_select',$study_id_select);
+        alert()->success('پایه تحصیلی با موفقیت ثبت شد','متن پیام');
+        return back()->with('study_id_select');
     }
 
     /**
@@ -84,7 +84,7 @@ class GradeController extends Controller
     public function update(Request $request, Grade $grade)
     {
         $grade->update($request->all());
-        alert()->success('ویرایش رشته تحصیلی با موفقیت انجام شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('ویرایش پایه تحصیلی با موفقیت انجام شد','متن پیام');
         return redirect('/admin/grades');
     }
 
@@ -97,7 +97,7 @@ class GradeController extends Controller
     public function destroy(Grade $grade)
     {
         $grade->delete();
-        alert()->success('رشته تحصیلی با موفقیت حذف شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('پایه تحصیلی با موفقیت حذف شد','متن پیام');
         return back();
     }
 }

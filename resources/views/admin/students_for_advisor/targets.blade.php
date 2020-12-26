@@ -17,16 +17,22 @@
                         <hr>
                         <form action="{{ route('students.store') }}" method="POST">
                             @CSRF
-                            <div class="row" style="height: 84px">
+                            <div class="row">
                                 @foreach($targets as $target)
                                     @if($user->id == $target->user_id)
-                                        <div class="col-md-6 col-xl-3 height-card box-margin">
-                                            <div class="card text-white bg-primary">
+                                        <div class="col-md-6 col-xl-2 box-margin">
+                                            <div class="card text-black-50 bg-boxshadow">
                                                 <div class="card-header border-bottom-0">{{ $target->title }}</div>
-                                                <div class="card-body">
-                                                    <p class="card-text text-white">
-                                                        تاریخ شروع: {{ $target->start_date }} <br>
-                                                        تاریخ پایان: {{ $target->end_date }}
+                                                <div class="card-body align-content-center">
+                                                    <p class="card-text text-black-50 text-center">
+                                                        <b>تاریخ شروع: </b> {{ $target->start_date }} <br>
+                                                        <b>تاریخ پایان: </b>{{ $target->end_date }}
+                                                    </p>
+                                                    <p class="text-center">
+                                                        <form action="/admin/plans/students/{{ $student->id }}/target/{{ $target->id }}" method="POST">
+                                                            @CSRF
+                                                            <button type="submit" class="btn btn-primary full-width">تنظیم برنامه</button>
+                                                        </form>
                                                     </p>
                                                 </div>
                                             </div>
@@ -35,7 +41,7 @@
                                 @endforeach
 
                             </div><!-- Row -->
-                            <a href="/admin/plans/students" class="btn btn-danger">بازگشت به لیست</a>
+                            <a href="/admin/plans/students" class="btn btn-danger">بازگشت به لیست دانش آموزان</a>
                         </form>
                     </div>
                 </div>

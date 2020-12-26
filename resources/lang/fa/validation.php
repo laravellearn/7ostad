@@ -176,8 +176,11 @@ return [
         'terms'                 => 'شرایط',
         'province'              => 'استان',
         'body'                  => 'متن',
-        'national code'         => 'کدملی',
         'birthdate'             => 'تاریخ تولد',
-        'national code'         => 'کدملی'
+        'national_code'         => 'کدملی',
+        'grade_id'              => 'پایه تحصیلی',
+        'study_id'              => 'رشته تحصیلی',
+        'fname'                 => 'نام',
+        'lname'                 => 'نام خانوادگی'
     ],
 ];

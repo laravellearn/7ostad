@@ -30,7 +30,9 @@
                                     <label class="control-label">رشته تحصیلی-پایه تحصیلی-گروه درسی*</label>
                                     <select class="form-control form-control-sm mb-3 my_select" name="group_id">
                                         @foreach($lessongroups as $lessongroup)
-                                            <option value="{{ $lessongroup->id }}">
+                                            <option value="{{ $lessongroup->id }}" @if($lessongroup->id == Session::get('group_id'))
+                                            selected
+                                                @endif>
                                                 <?php
                                                     echo
                                                         $lessongroup->grade->study->name." -> ".
@@ -43,11 +45,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"> نام کتاب*</label>
-                                    <input type="text" name="name" value="{{ Session::get('name') }}" class="form-control" required>
+                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"> رنگ*</label>
-                                    <input type="text" id="horizontal-colorpicker" name="color" value="{{ Session::get('name') }}" class="form-control colorpicker-element" required>
+                                    <input type="text" id="horizontal-colorpicker" name="color" value="{{ old('color') }}" class="form-control colorpicker-element" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary submit">ثبت اطلاعات</button>
                             </form>
@@ -57,7 +59,7 @@
                 <div class="col-8 box-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-2">گروه های درسی</h4>
+                            <h4 class="card-title mb-2">لیست کتاب ها</h4>
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
@@ -66,7 +68,6 @@
                                         <th>گروه درسی</th>
                                         <th> نام کتاب</th>
                                         <th>رنگ</th>
-                                        <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                 </thead>
@@ -79,13 +80,6 @@
                                             <td>{{$book->lessongroup->name}}</td>
                                             <td>{{$book->name}}</td>
                                             <td style="background-color: {{ $book->color }};padding:-50px"></td>
-                                            <td>
-                                                @if($book->status == "1")
-                                                <span class="badge badge-success">فعال</span>
-                                                @else
-                                                <span class="badge badge-danger badge-md">فعال</span>
-                                                @endif
-                                            </td>
 
                                             <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="{{route('books.edit', $book->id)}}" style="margin-top:2px;margin-left:6px">

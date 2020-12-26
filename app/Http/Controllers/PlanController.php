@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Grade;
+use App\Models\Operation;
 use App\Models\Plan;
 use App\Models\Student;
 use App\Models\Study;
 use App\Models\Target;
+use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -128,5 +131,18 @@ class PlanController extends Controller
         }else{
             return redirect('/admin/plans/students');
         }
+    }
+
+    public function getPlansTable(student $student, target $target)
+    {
+        $operations = Operation::all();
+        $books = Book::all();
+        $topics = Topic::all();
+        return view('admin.plans.all')
+            ->with('student',$student)
+            ->with('target',$target)
+            ->with('operations',$operations)
+            ->with('books',$books)
+            ->with('topics',$topics);
     }
 }

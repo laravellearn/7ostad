@@ -2,18 +2,22 @@
 @section('title','ویرایش دانش آموز')
 
 @section('style')
+    <script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
-    <script src="/js/jquery.min.js"></script>
     <script src="/js/default-assets/select2.min.js"></script>
     <link rel="stylesheet" href="/css/default-assets/select2.min.css">
     <script>
         $(document).ready(function() {
             $('.my_select').select2();
-        });
+            $("#pdpF2").persianDatepicker({
+                formatDate: "YYYY/0M/0D",
+            })
+        })
     </script>
+
     <style>
-        .pdp-default{
-            left: 25%!important;
+        .pdp-default {
+            left: 25% !important;
         }
     </style>
 @endsection
@@ -51,12 +55,12 @@
                                             <input type="text" name="lname" value="{{ $student->lname }}" class="form-control">
                                         </div>
                                     </div><!-- Col -->
-                                
+
                                     <div class="col-sm-3">
                                         <div class="form-group mb-50">
                                             <label>تاریخ تولد</label>
 
-                                            <input type="text" value="{{ $student->birthdate }}" name="birthdate"  class="form-control usage">
+                                            <input type="text" id= "pdpF2" value="{{ $student->birthdate }}" name="birthdate"  class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
@@ -78,19 +82,19 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="control-label">شماره موبایل</label>
-                                            <input type="text" value="{{ $student->mobile }}" name="mobile" class="form-control">
+                                            <input type="number" value="{{ $student->mobile }}" name="mobile" class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="control-label">تلفن ثابت</label>
-                                            <input type="text" value="{{ $student->phone }}" class="form-control" name="phone">
+                                            <input type="number" value="{{ $student->phone }}" class="form-control" name="phone">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="control-label">کدملی*</label>
-                                            <input type="text" class="form-control" value="{{ $student->national_code }}" name="national_code">
+                                            <input type="number" class="form-control" value="{{ $student->national_code }}" name="national_code">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
@@ -159,14 +163,29 @@
             </div>
         </div>
     </div>
-    <script>
-$("input").on("change", function() {
-        this.setAttribute(
-            "data-date",
-            moment(this.value, "YYYY-MM-DD")
-            .format( this.getAttribute("data-date-format") )
-        )
-    }).trigger("change")
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="study_id"]').on('change', function() {
+                var study_id = $(this).val();
+                if (study_id) {
+                    $.ajax({
+                        type: "GET",
+                        url: "{{url('/students/create')}}/" + study_id,
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            var d = $('select[name="grade_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="grade_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
     </script>
+
 @endsection

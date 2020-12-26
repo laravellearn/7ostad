@@ -2,13 +2,22 @@
 @section('title','ویرایش کاربر')
 
 @section('style')
-        <link rel="stylesheet" href="/css/default-assets/notification.css">
-        <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
-        <style>
-            .pdp-default{
-                left: 65%!important;
-            }
-        </style>
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
+    <script src="/js/jquery.min.js"></script>
+    <style>
+        .pdp-default{
+            left: 25%!important;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('.my_select').select2();
+            $("#pdpF2").persianDatepicker({
+                formatDate: "YYYY/0M/0D",
+            });
+        });
+    </script>
+
 @endsection
 
 @section('content')
@@ -51,6 +60,21 @@
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                            <label for="exampleInputPassword11">کلمه عبور</label>
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword12">تکرار کلمه عبور</label>
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                                        </div>
+                                    </div>
+
+                                </div><!-- Row -->
+                                <div class="row" style="height: 84px">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
                                             <label class="control-label">نام و نام خانوادگی*</label>
                                             <input type="text" name="name" value="{{ $user->name }}" required class="form-control">
                                         </div>
@@ -61,13 +85,10 @@
                                             <input type="number" class="form-control" value="{{ $user->national_code }}" required name="national_code">
                                         </div>
                                     </div><!-- Col -->
-                                </div><!-- Row -->
-                                <div class="row" style="height: 84px">
-
                                     <div class="col-sm-3">
                                         <div class="form-group mb-50">
                                             <label>تاریخ تولد</label>
-                                            <input type="text" name="birthdate" value="{{ $user->birthdate }}"  class="form-control usage">
+                                            <input type="text" id="pdpF2" name="birthdate" value="{{ $user->birthdate }}"  class="form-control">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
@@ -83,6 +104,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div><!-- Row -->
+                                <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="control-label">شماره موبایل*</label>
@@ -95,10 +118,7 @@
                                             <input type="number" class="form-control" value="{{ $user->phone }}" name="phone">
                                         </div>
                                     </div><!-- Col -->
-                                </div><!-- Row -->
-                                <div class="row">
-
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">آدرس منزل</label>
                                             <input type="text" name="address" value="{{ $user->address }}" class="form-control">

@@ -14,6 +14,7 @@
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                 <thead>
                                 <tr>
+                                    <th>شناسه</th>
                                     <th>نام</th>
                                     <th>نام خانوادگی</th>
                                     <th>جنسیت</th>
@@ -29,6 +30,7 @@
                                 <tbody>
                                 @foreach($students as $student)
                                     <tr>
+                                        <td>{{ $student->stid }}</td>
                                         <td>{{ $student->fname }}</td>
                                         <td>{{ $student->lname }}</td>
                                         <td>

@@ -50,14 +50,14 @@ class UserController extends Controller
             'address' => 'nullable',
             'description' => 'nullable',
             'image' => 'nullable',
-            'gender' => 'required',
+            'gender' => ['required',Rule::in(['man', 'woman'])],
             'mobile' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric',
             'phone' => 'numeric|digits:11|nullable',
             'status' => 'boolean'
         ]);
         $request['password'] = Hash::make($request['password']);
         User::create($request->all());
-        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -92,22 +92,28 @@ class UserController extends Controller
      */
     public function update(Request $request, user $user)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users','email')->ignore($request->user()->id)],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users','email')->ignore($request->user->id)],
             'user_type' => Rule::in(['admin', 'advisor']),
             'national_code' => 'numeric|digits:10',
             'birthdate' => 'max:10|nullable',
             'address' => 'nullable',
             'description' => 'nullable',
             'image' => 'nullable',
-            'gender' => 'required',
+            'gender' => ['required',Rule::in(['man', 'woman'])],
             'mobile' => 'required|regex:/(09)[0-9]{9}/|digits:11|numeric',
             'phone' => 'numeric|digits:11|nullable',
             'status' => 'boolean'
         ]);
-        $user->update($request->all());
-        alert()->success('اطلاعات با موفقیت ویرایش شد','متن پیام')->persistent('خیلی خوب');
+        if ($request['password']){
+            $request->validate([
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+            $data['password'] = Hash::make($request['password']);
+        }
+        $user->update($data);
+        alert()->success('اطلاعات با موفقیت ویرایش شد','متن پیام');
         return back();
     }
 
@@ -120,7 +126,7 @@ class UserController extends Controller
     public function destroy(user $user)
     {
         $user->delete();
-        alert()->success('کاربر موردنظر با موفقیت حذف گردید','متن پیام')->persistent('خیلی خوب');
+        alert()->success('کاربر موردنظر با موفقیت حذف گردید','متن پیام');
         return back();
     }
 }

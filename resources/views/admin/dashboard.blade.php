@@ -40,7 +40,13 @@
                                                     <tr>
                                                         <td>{{ $student->fname }}</td>
                                                         <td>{{ $student->lname }}</td>
-                                                        <td>{{ $student->gender }}</td>
+                                                        <td>
+                                                            @if($student->gender == "man")
+                                                                پسر
+                                                            @else
+                                                                دختر
+                                                            @endif
+                                                        </td>
                                                         <td>{{ $student->mobile }}</td>
                                                         <td>{{ $student->grade->name }}</td>
                                                         <td>{{ $student->study->name }}</td>

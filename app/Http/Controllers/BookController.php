@@ -46,7 +46,7 @@ class BookController extends Controller
     {
         Book::create($request->all());
         Session::put($request->all());
-        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('اطلاعات با موفقیت ثبت شد','متن پیام');
         return back();
     }
 
@@ -87,7 +87,7 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $book->update($request->all());
-        alert()->success('ویرایش کتاب با موفقیت انجام شد','متن پیام')->persistent('خیلی خوب');
+        alert()->success('ویرایش کتاب با موفقیت انجام شد','متن پیام');
         return redirect('/admin/books');
     }
 
@@ -100,7 +100,7 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        alert()->success('کتاب درسی با موفقیت حذف شد', 'متن پیام')->persistent('خیلی خوب');
+        alert()->success('کتاب درسی با موفقیت حذف شد', 'متن پیام');
         return redirect('admin/books');
     }
 }

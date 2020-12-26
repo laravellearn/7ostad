@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','ویرایش رشته تحصیلی')
+@section('title','ویرایش پایه تحصیلی')
 @section('content')
     <!-- Main Content Area -->
     <div class="main-content">
@@ -9,7 +9,7 @@
                     <div class="col-4 box-margin">
                         <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-2">ویرایش رشته تحصیلی</h4><hr>
+                            <h4 class="card-title mb-2">ویرایش پایه تحصیلی</h4><hr>
                         <form action="/admin/grades/{{ $grade->id }}" method="POST">
                             @CSRF
                             @method('patch')
@@ -25,13 +25,6 @@
                                 <label class="control-label">رشته تحصیلی*</label>
                                 <input type="text" name="name" value="{{ $grade->name }}" required class="form-control">
                             </div>
-                            <div class="form-group">
-                                <label class="control-label">وضعیت*</label>
-                                <select class="form-control form-control-sm mb-3" name="status">
-                                    <option value="1" {{ $grade->status=="1"?'selected':'' }}>فعال</option>
-                                    <option value="0" {{ $grade->status=="0"?'selected':'' }}>غیرفعال</option>
-                                </select>
-                            </div>
                             <button type="submit" class="btn btn-primary submit">ویرایش اطلاعات</button>
                         </form>
                     </div>
@@ -39,13 +32,12 @@
                     <div class="col-8 box-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title mb-2">رشته های تحصیلی</h4>
+                                <h4 class="card-title mb-2">پایه های تحصیلی</h4>
                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
                                     <tr>
                                         <th>رشته تحصیلی</th>
                                         <th>پایه تحصیلی</th>
-                                        <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -56,13 +48,6 @@
                                             <td>{{ $grade->name }}</td>
                                             <td>
                                                 {{ $grade->study->name }}
-                                            </td>
-                                            <td>
-                                                @if($grade->status == "1")
-                                                    فعال
-                                                @else
-                                                    غیرفعال
-                                                @endif
                                             </td>
                                             <td style="text-align: center;padding-top: 2px" class="d-flex">
                                                 <a href="/admin/grades/{{ $grade->id }}/edit" style="margin-top:2px;margin-left:6px">
