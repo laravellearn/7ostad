@@ -8,6 +8,7 @@ use App\Models\Operation;
 use App\Models\Plan;
 use App\Models\Student;
 use App\Models\Study;
+use App\Models\Subtarget;
 use App\Models\Target;
 use App\Models\Topic;
 use App\Models\User;
@@ -138,11 +139,15 @@ class PlanController extends Controller
         $operations = Operation::all();
         $books = Book::all();
         $topics = Topic::all();
+        $subtargets = Subtarget::all();
+        $user = Auth::user();
         return view('admin.plans.all')
             ->with('student',$student)
             ->with('target',$target)
             ->with('operations',$operations)
             ->with('books',$books)
-            ->with('topics',$topics);
+            ->with('subtargets',$subtargets)
+            ->with('topics',$topics)
+            ->with('user',$user);
     }
 }

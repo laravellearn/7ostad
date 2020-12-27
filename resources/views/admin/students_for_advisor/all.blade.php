@@ -49,8 +49,7 @@
                                             <a href="/admin/plans/student/{{ $student->id }}" style="margin-top:2px;margin-left:6px">
                                                 <i class="fa fa-eye" style="font-size:17px;color:green"></i>
                                             </a>
-                                            <form action="/admin/plans/targets/{{ $student->id }}" method="POST">
-                                                @CSRF
+                                            <form action="/admin/plans/targets/{{ $student->id }}" method="get">
                                                 <button type="submit" class="fa fa-table " style="font-size:20px;color:steelblue;border: none">
                                                 </button>
                                             </form>

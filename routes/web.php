@@ -35,7 +35,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     //Plans
     Route::get('/plans/students','PlanController@getStudents');
     Route::get('/plans/student/{student}','PlanController@getStudent');
-    Route::post('/plans/targets/{student}','PlanController@getTargets');
+    Route::get('/plans/targets/{student}','PlanController@getTargets');
     Route::get('/plans/students/{student}/target/{target}','PlanController@getPlansTable');
 
 });

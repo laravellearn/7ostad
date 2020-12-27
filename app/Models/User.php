@@ -65,4 +65,9 @@ class User extends Authenticatable
         return $this->hasMany(Motivational::class, 'user_id');
     }
 
+    public function operations()
+    {
+        return $this->belongsToMany(Operation::class);
+    }
+
 }

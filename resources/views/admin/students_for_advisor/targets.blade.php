@@ -15,8 +15,6 @@
                         ?>
                         <h6 class="card-title">انتخاب برنامه هدف - {{ $name }}</h6>
                         <hr>
-                        <form action="{{ route('students.store') }}" method="POST">
-                            @CSRF
                             <div class="row">
                                 @foreach($targets as $target)
                                     @if($user->id == $target->user_id)
@@ -29,8 +27,7 @@
                                                         <b>تاریخ پایان: </b>{{ $target->end_date }}
                                                     </p>
                                                     <p class="text-center">
-                                                        <form action="/admin/plans/students/{{ $student->id }}/target/{{ $target->id }}" method="POST">
-                                                            @CSRF
+                                                        <form action="/admin/plans/students/{{ $student->id }}/target/{{ $target->id }}" method="GET">
                                                             <button type="submit" class="btn btn-primary full-width">تنظیم برنامه</button>
                                                         </form>
                                                     </p>
@@ -42,7 +39,6 @@
 
                             </div><!-- Row -->
                             <a href="/admin/plans/students" class="btn btn-danger">بازگشت به لیست دانش آموزان</a>
-                        </form>
                     </div>
                 </div>
             </div>
