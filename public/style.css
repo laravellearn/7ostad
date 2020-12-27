@@ -11167,3 +11167,58 @@ table.table.align-items-center td a {
   left: 0 !important;
   right: auto !important;
 }
+
+
+.tabs-section {
+  overflow: hidden;
+  padding: 60px 0px;
+}
+
+.tabs-section .feature-img {
+  max-height: 255px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 3px solid #fff;
+}
+
+.tabs-section .nav-tabs {
+  border: 0;
+}
+
+.tabs-section .nav-link {
+  border: 0;
+  padding: 11px 15px;
+  transition: 0.3s;
+  color: #000;
+  border-radius: 0;
+  border-right: 2px solid #cddc39 !important;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.tabs-section .nav-link:hover {
+  color: yellow;
+}
+
+.tabs-section .nav-link.active {
+  color: #333333;
+  background: yellow;
+}
+
+.tabs-section .nav-link:hover {
+  border-right: 4px solid #cddc39;
+}
+
+.tabs-section .tab-pane.active {
+  -webkit-animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.tabs-section .details h3 {
+  font-size: 26px;
+  color: #cddc39;
+}
+
+.tabs-section .details p {
+  color: #aaaaaa;
+}
