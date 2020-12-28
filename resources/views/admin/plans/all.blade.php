@@ -51,7 +51,7 @@
                                                     <td>
                                                         <select class="form-control form-control-sm mb-3 my_select{{ $i }}" name="operation_id">
                                                             @foreach($operations as $operation)
-{{--                                                                <option value="{{ $operation->id }}">{{ $user->operation->name }}</option>--}}
+                                                             <option value="{{ $operation->id }}">{{ $operation->name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
@@ -62,27 +62,29 @@
                                                     <td>
                                                         <select class="form-control form-control-sm mb-3 my_select{{ $i }}" name="book_id">
                                                             @foreach($subtargets as $subtarget)
-{{--                                                                <option value="">{{ $target->subtarget->book->name }}</option>--}}
+                                                          <option value="">{{$subtarget->book->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                 @endfor
                                             </tr>
                                             <tr>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                                <td>لورم ایپسوم متن ساختگی </td>
-                                            </tr>
+                                                @for($i=10;$i<=17;$i++)
+                                                    <td>
+                                                        <select class="form-control form-control-sm mb-3 my_select{{ $i }}" name="book_id">
+                                                            @foreach($topics as $topic)
+                                                          <option value="">{{$topic->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                @endfor
+                                            </tr> 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
+                        <a href="" class="btn btn-primary pull-left m-4">ارسال اطلاعات</a>
                     </div>
                 </div>
             </div>

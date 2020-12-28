@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function operations()
     {
-        return $this->belongsToMany(Operation::class);
+        return $this->hasMany(Operation::class, 'user_id');
     }
 
 }

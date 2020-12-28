@@ -19,4 +19,8 @@ class Target extends Model
     {
         return $this->belongsToMany(Subtarget::class);
     }
+    public function book()
+    {
+        return $this->belongsToMany(Topic::class);
+    }
 }
