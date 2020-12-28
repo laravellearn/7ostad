@@ -42,8 +42,8 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
 Route::get('/lessongroups/{study_id}/', 'LessongroupController@getGrade');
 Route::get('/subtargets/{book_id}/', 'SubtargetController@getBook');
 Route::get('/students/create/{study_id}/', 'StudentController@getGrade');
+Route::get('/plans/{book_id}/','PlanController@getTopic');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

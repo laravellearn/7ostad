@@ -153,4 +153,10 @@ class PlanController extends Controller
             ->with('topics',$topics)
             ->with('user',$user);
     }
+
+    public function getTopic($book_id){
+        $tpc = Topic::where('book_id', '=', $book_id)->get();
+      
+        return json_encode($tpc);
+    }
 }

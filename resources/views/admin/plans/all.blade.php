@@ -62,22 +62,20 @@
                                                     <td>
                                                         <select class="form-control form-control-sm mb-3 my_select{{ $i }}" name="book_id">
                                                             @foreach($subtargets as $subtarget)
-                                                          <option value="">{{$subtarget->book->name}}</option>
+                                                          <option value="{{ $subtarget->id }}">{{$subtarget->book->name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </td>
                                                 @endfor
                                             </tr>
                                             <tr>
-                                                @for($i=10;$i<=17;$i++)
+                                                <!-- @for($i=10;$i<=17;$i++) -->
                                                     <td>
-                                                        <select class="form-control form-control-sm mb-3 my_select{{ $i }}" name="book_id">
-                                                            @foreach($topics as $topic)
-                                                          <option value="">{{$topic->name}}</option>
-                                                            @endforeach
+                                                        <select class="form-control form-control-sm mb-3 my_select{{ $i }}" name="topic_id">
+                                                       
                                                         </select>
                                                     </td>
-                                                @endfor
+                                                <!-- @endfor -->
                                             </tr> 
                                         </tbody>
                                     </table>
@@ -90,4 +88,29 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="book_id"]').on('change', function() {
+            var book_id = $(this).val();
+            alert(book_id);
+            if (book_id) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{url('plans/students/')}}/" + book_id,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data);
+                        var d = $('select[name="topic_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="topic_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+</script>
 @endsection

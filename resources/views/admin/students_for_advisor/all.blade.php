@@ -49,13 +49,7 @@
                                             <a href="/admin/plans/student/{{ $student->id }}" style="margin-top:2px;margin-left:6px">
                                                 <i class="fa fa-eye" style="font-size:17px;color:green"></i>
                                             </a>
-<<<<<<< HEAD
                                             <form action="/admin/plans/targets/{{ $student->id }}" method="get">
-=======
-                                            <form action="{{ route('plans.target', $student->id) }}" method="POST">
-                                                @CSRF
-                                              
->>>>>>> bd56452e6c60300393d47529dfc758100a250aff
                                                 <button type="submit" class="fa fa-table " style="font-size:20px;color:steelblue;border: none">
                                                 </button>
                                             </form>
