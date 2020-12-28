@@ -136,13 +136,13 @@ class PlanController extends Controller
 
     public function getPlansTable(student $student, target $target)
     {
+
         $user = Auth::user()->id;
         $operations = Operation::with('user')->where('user_id', $user)->get();
         $books = Book::with('subtargets')->get();
         $topics = Topic::with('book')->get();
         $subtargets = Subtarget::with('book')->select('book_id')
         ->groupBy('book_id')->get();
-    
  
         return view('admin.plans.all')
             ->with('student',$student)

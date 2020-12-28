@@ -27,7 +27,13 @@
                                                         <b>تاریخ پایان: </b>{{ $target->end_date }}
                                                     </p>
                                                     <p class="text-center">
+<<<<<<< HEAD
                                                         <form action="/admin/plans/students/{{ $student->id }}/target/{{ $target->id }}" method="GET">
+=======
+                                                        <form action="{{ route('plans.student.target', [$student->id, $target->id]) }}" method="POST">
+                                                            @CSRF
+                                                           
+>>>>>>> bd56452e6c60300393d47529dfc758100a250aff
                                                             <button type="submit" class="btn btn-primary full-width">تنظیم برنامه</button>
                                                         </form>
                                                     </p>

@@ -161,5 +161,29 @@
     </div>
 </div>
 
-number
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="study_id"]').on('change', function() {
+            var study_id = $(this).val();
+            if (study_id) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{url('/lessongroups/')}}/" + study_id,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data);
+                        var d = $('select[name="grade_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="grade_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+</script>
 @endsection
+
