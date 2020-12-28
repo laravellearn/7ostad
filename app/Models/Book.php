@@ -24,6 +24,6 @@ class Book extends Model
 
     public function subtargets()
     {
-        return $this->belongsToMany(Subtarget::class);
+        return $this->hasMany(Subtarget::class, 'book_id');
     }
 }

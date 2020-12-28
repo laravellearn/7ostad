@@ -136,11 +136,14 @@ class PlanController extends Controller
 
     public function getPlansTable(student $student, target $target)
     {
-        $operations = Operation::all();
-        $books = Book::all();
-        $topics = Topic::all();
-        $subtargets = Subtarget::all();
-        $user = Auth::user();
+
+        $user = Auth::user()->id;
+        $operations = Operation::with('user')->where('user_id', $user)->get();
+        $books = Book::with('subtargets')->get();
+        $topics = Topic::with('book')->get();
+        $subtargets = Subtarget::with('book')->select('book_id')
+            ->groupBy('book_id')->get();
+
         return view('admin.plans.all')
             ->with('student',$student)
             ->with('target',$target)
@@ -149,5 +152,11 @@ class PlanController extends Controller
             ->with('subtargets',$subtargets)
             ->with('topics',$topics)
             ->with('user',$user);
+    }
+
+    public function getTopic($book_id)
+    {
+        $tpc = Topic::where('book_id', '=', $book_id)->get();
+        return json_encode($tpc);
     }
 }
